@@ -1,0 +1,13 @@
+﻿colleges,application_volume,admission_rate,graduate_rate_4yr,graduate_rate_6yr,tuition_cost
+harvard,54008,0.036,0.84,0.975,59320
+mit,29281,0.046,0.85,0.96,62396
+tufts,33415,0.108,0.88,0.935,70704
+northeastern,98425,0.052,0.18,0.905,67990
+boston university,78769,0.11,0.81,0.895,69870
+boston college,39686,0.139,0.88,0.91,69400
+emerson college,11091,0.47,0.745,0.795,57984
+suffolk university,10115,0.82,0.595,0.607,48926
+emmanuel,5937,0.76,0.594,0.68,50208
+mcphs,6010,0.852,0.51,0.64,41130
+simmons,4900,0.66,0.66,0.71,46900
+wentworth,5985,0.91,0.54,0.69,44260
