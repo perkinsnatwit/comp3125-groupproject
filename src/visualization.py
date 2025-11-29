@@ -12,15 +12,6 @@ df["Application Volume (Students)"] = (
 sns.set_theme(style="whitegrid", palette="muted")
 
 
-<<<<<<< HEAD
-# Pairplot
-sns.pairplot(data=df, kind='kde', diag_kind='none')
-
-plt.tight_layout()
-plt.show()
-
-
-=======
 plt.figure(figsize=(10, 6))
 sns.barplot(x="Admission Rates", y="College", data=df, color="skyblue")
 plt.title("Admission Rates by College")
@@ -59,4 +50,3 @@ plt.tight_layout()
 plt.show()
 
 df.to_csv("datasets/college_data_cleaned.csv", index=False)
->>>>>>> master
