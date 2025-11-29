@@ -25,5 +25,10 @@ axes[2].set_xticklabels(axes[2].get_xticklabels(), rotation=45)
 axes[2].set_title('Graduation Rates by College')
 axes[2].legend(loc='best')
 
+# Pairplot
+sns.pairplot(data=df, kind='kde', diag_kind='none')
+
 plt.tight_layout()
 plt.show()
+
+
