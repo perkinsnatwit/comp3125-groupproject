@@ -1,29 +1,46 @@
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
-df = pd.read_csv('datasets/college_data.csv')
-df['Application Volume (Students)'] = df['Application Volume (Students)'].replace({',': ''}, regex=True).astype(int)
 
-# Create a single figure with three stacked subplots so all plots appear in one window
-fig, axes = plt.subplots(3, 1, figsize=(12, 18))
+file_path = "datasets/college_data.csv"
+df = pd.read_csv(file_path)
 
-# Application volume
-sns.barplot(data=df, x='College', y='Application Volume (Students)', ax=axes[0])
-axes[0].set_xticklabels(axes[0].get_xticklabels(), rotation=45)
-axes[0].set_title('Application Volume by College')
+df["Application Volume (Students)"] = (
+    df["Application Volume (Students)"].astype(str).str.replace(",", "").astype(int)
+)
 
-# Admission rates
-sns.barplot(data=df, x='College', y='Admission Rates', ax=axes[1])
-axes[1].set_xticklabels(axes[1].get_xticklabels(), rotation=45)
-axes[1].set_title('Admission Rates by College')
+sns.set(style="whitegrid", palette="muted")
 
-# Graduation rates (4- and 6-year)
-df_melted = df.melt(id_vars='College', value_vars=['Graduation Rate (4 Years)', 'Graduation Rate (6 Years)'],
-                    var_name='Graduation Period', value_name='Rate')
-sns.barplot(data=df_melted, x='College', y='Rate', hue='Graduation Period', ax=axes[2])
-axes[2].set_xticklabels(axes[2].get_xticklabels(), rotation=45)
-axes[2].set_title('Graduation Rates by College')
-axes[2].legend(loc='best')
 
+plt.figure(figsize=(10, 6))
+sns.barplot(x="Admission Rates", y="College", data=df, color="skyblue")
+plt.title("Admission Rates by College")
 plt.tight_layout()
 plt.show()
+
+plt.figure(figsize=(8, 6))
+sns.scatterplot(x="Admission Rates", y="Graduation Rate (6 Years)", hue="College", data=df, s=100)
+plt.title("Admission Rate vs 6-Year Graduation Rate")
+plt.tight_layout()
+plt.show()
+
+plt.figure(figsize=(8, 5))
+sns.heatmap(df.select_dtypes(include='number').corr(), annot=True, cmap="coolwarm", fmt=".2f")
+plt.title("Correlation Heatmap of College Metrics")
+plt.tight_layout()
+plt.show()
+
+plt.figure(figsize=(8, 6))
+sns.scatterplot(x="Application Volume (Students)", y="Admission Rates", hue="College", data=df, s=120)
+plt.title("Application Volume vs Admission Rate")
+plt.tight_layout()
+plt.show()
+
+plt.figure(figsize=(10, 6))
+df_melt = df.melt(id_vars="College", value_vars=["Graduation Rate (4 Years)", "Graduation Rate (6 Years)"], var_name="Graduation Type", value_name="Rate")
+sns.barplot(x="Rate", y="College", hue="Graduation Type", data=df_melt)
+plt.title("4-Year vs 6-Year Graduation Rates by College")
+plt.tight_layout()
+plt.show()
+
+df.to_csv("datasets/college_data_cleaned.csv", index=False)
