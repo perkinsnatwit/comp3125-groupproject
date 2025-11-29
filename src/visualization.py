@@ -9,7 +9,7 @@ df["Application Volume (Students)"] = (
     df["Application Volume (Students)"].astype(str).str.replace(",", "").astype(int)
 )
 
-sns.set(style="whitegrid", palette="muted")
+sns.set_theme(style="whitegrid", palette="muted")
 
 
 plt.figure(figsize=(10, 6))
@@ -21,6 +21,12 @@ plt.show()
 plt.figure(figsize=(8, 6))
 sns.scatterplot(x="Admission Rates", y="Graduation Rate (6 Years)", hue="College", data=df, s=100)
 plt.title("Admission Rate vs 6-Year Graduation Rate")
+plt.tight_layout()
+plt.show()
+
+plt.figure(figsize=(10, 10))
+sns.pairplot(df.select_dtypes(include='number'), diag_kind="kde")
+plt.suptitle("Pairplot of College Metrics", y=1.001)
 plt.tight_layout()
 plt.show()
 
