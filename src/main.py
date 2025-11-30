@@ -20,7 +20,7 @@ def main():
     
     # Visualization
     print("Starting visualizations...")
-    visualizer = CollegeVisualizer("datasets/college_data.csv")
+    visualizer = CollegeVisualizer("datasets/engineered_data.csv")
     visualizer.create_all_visualizations()
     visualizer.save_cleaned_data()
     print("Visualizations completed!")
