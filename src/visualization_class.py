@@ -1,6 +1,7 @@
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
+import os
 
 
 class CollegeVisualizer:
@@ -35,7 +36,8 @@ class CollegeVisualizer:
         sns.barplot(x="admission_rate", y="colleges", data=self.df, color="skyblue")
         plt.title("Admission Rates by College")
         plt.tight_layout()
-        plt.savefig("figures/admission_rates_by_college.png", dpi=300)
+        os.makedirs("figures", exist_ok=True)
+        plt.savefig(os.path.join("figures", "admission_rates_by_college.png"), dpi=300)
         plt.show()
     
     def plot_admission_vs_graduation(self) -> None:
@@ -50,6 +52,7 @@ class CollegeVisualizer:
         )
         plt.title("Admission Rate vs 6-Year Graduation Rate")
         plt.tight_layout()
+        os.makedirs("figures", exist_ok=True)
         plt.savefig("figures/admission_vs_graduation.png", dpi=300)
         plt.show()
     
@@ -59,7 +62,8 @@ class CollegeVisualizer:
         sns.pairplot(self.df.select_dtypes(include='number'), diag_kind="kde")
         plt.suptitle("Pairplot of College Metrics", y=1.001)
         plt.tight_layout()
-        plt.savefig("figures/pairplot_college_metrics.png", dpi=300)
+        os.makedirs("figures", exist_ok=True)
+        plt.savefig(os.path.join("figures", "pairplot_college_metrics.png"), dpi=300)
         plt.show()
     
     def plot_correlation_heatmap(self) -> None:
@@ -73,6 +77,7 @@ class CollegeVisualizer:
         )
         plt.title("Correlation Heatmap of College Metrics")
         plt.tight_layout()
+        os.makedirs("figures", exist_ok=True)
         plt.savefig("figures/correlation_heatmap.png", dpi=300)
         plt.show()
     
@@ -88,6 +93,7 @@ class CollegeVisualizer:
         )
         plt.title("Application Volume vs Admission Rate")
         plt.tight_layout()
+        os.makedirs("figures", exist_ok=True)
         plt.savefig("figures/application_vs_admission.png", dpi=300)
         plt.show()
     
@@ -103,6 +109,7 @@ class CollegeVisualizer:
         sns.barplot(x="Rate", y="colleges", hue="Graduation Type", data=df_melt)
         plt.title("4-Year vs 6-Year Graduation Rates by College")
         plt.tight_layout()
+        os.makedirs("figures", exist_ok=True)
         plt.savefig("figures/graduation_rates_comparison.png", dpi=300)
         plt.show()
     
