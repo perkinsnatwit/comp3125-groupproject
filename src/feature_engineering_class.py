@@ -56,10 +56,3 @@ class FeatureEngineer:
     def get_dataframe(self) -> pd.DataFrame:
         """Return the current dataframe."""
         return self.df
-
-
-if __name__ == "__main__":
-    # Example usage
-    engineer = FeatureEngineer('datasets/dataset.csv')
-    engineer.engineer_all_features()
-    engineer.save_engineered_data()

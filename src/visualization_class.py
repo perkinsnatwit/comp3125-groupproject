@@ -138,6 +138,6 @@ class CollegeVisualizer:
 
 if __name__ == "__main__":
     # Example usage
-    visualizer = CollegeVisualizer("datasets/college_data.csv")
+    visualizer = CollegeVisualizer("datasets/college_data_cleaned.csv")
     visualizer.create_all_visualizations()
     visualizer.save_cleaned_data()
