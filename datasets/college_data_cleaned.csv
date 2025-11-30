@@ -1,13 +1,13 @@
-College,Application Volume (Students),Admission Rates,Graduation Rate (4 Years),Graduation Rate (6 Years)
-Harvard,54008,0.036,0.84,0.975
-MIT,29281,0.046,0.85,0.96
-Tufts,33415,0.108,0.88,0.935
-Northeastern,98425,0.052,0.18,0.905
-Boston University,78769,0.11,0.81,0.895
-Boston College,39686,0.139,0.88,0.91
-Emerson College,11091,0.47,0.745,0.795
-Suffolk University,10115,0.82,0.595,0.607
-Emmanuel College,5937,0.76,0.594,0.68
-MCPHS,6010,0.852,0.51,0.64
-Simmons University,4900,0.66,0.66,0.71
-Wentworth Institute of Technology,5985,0.91,0.54,0.69
+College,Application Volume (Students),Admission Rates,Graduation Rate (4 Years),Graduation Rate (6 Years),Tuition Cost
+Harvard,54008,0.036,0.84,0.975,59320
+MIT,29281,0.046,0.85,0.96,62396
+Tufts,33415,0.108,0.88,0.935,70704
+Northeastern,98425,0.052,0.18,0.905,67990
+Boston University,78769,0.11,0.81,0.895,69870
+Boston College,39686,0.139,0.88,0.91,69400
+Emerson College,11091,0.47,0.745,0.795,57984
+Suffolk University,10115,0.82,0.595,0.607,48926
+Emmanuel College,5937,0.76,0.594,0.68,50208
+MCPHS,6010,0.852,0.51,0.64,41130
+Simmons University,4900,0.66,0.66,0.71,46900
+Wentworth Institute of Technology,5985,0.91,0.54,0.69,44260
