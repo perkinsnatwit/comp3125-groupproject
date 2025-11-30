@@ -19,8 +19,8 @@ class CollegeVisualizer:
     
     def _preprocess_data(self) -> None:
         """Preprocess the data by cleaning application volume column."""
-        self.df["Application Volume (Students)"] = (
-            self.df["Application Volume (Students)"].astype(str)
+        self.df["application_volume"] = (
+            self.df["application_volume"].astype(str)
             .str.replace(",", "")
             .astype(int)
         )
@@ -32,7 +32,7 @@ class CollegeVisualizer:
     def plot_admission_rates(self) -> None:
         """Create a bar plot of admission rates by college."""
         plt.figure(figsize=(10, 6))
-        sns.barplot(x="Admission Rates", y="College", data=self.df, color="skyblue")
+        sns.barplot(x="admission_rate", y="colleges", data=self.df, color="skyblue")
         plt.title("Admission Rates by College")
         plt.tight_layout()
         plt.show()
@@ -41,9 +41,9 @@ class CollegeVisualizer:
         """Create a scatter plot of admission rate vs 6-year graduation rate."""
         plt.figure(figsize=(8, 6))
         sns.scatterplot(
-            x="Admission Rates",
-            y="Graduation Rate (6 Years)",
-            hue="College",
+            x="admission_rate",
+            y="graduate_rate_6yr",
+            hue="colleges",
             data=self.df,
             s=100
         )
@@ -76,9 +76,9 @@ class CollegeVisualizer:
         """Create a scatter plot of application volume vs admission rate."""
         plt.figure(figsize=(8, 6))
         sns.scatterplot(
-            x="Application Volume (Students)",
-            y="Admission Rates",
-            hue="College",
+            x="application_volume",
+            y="admission_rate",
+            hue="colleges",
             data=self.df,
             s=120
         )
@@ -90,12 +90,12 @@ class CollegeVisualizer:
         """Create a bar plot comparing 4-year vs 6-year graduation rates."""
         plt.figure(figsize=(10, 6))
         df_melt = self.df.melt(
-            id_vars="College",
-            value_vars=["Graduation Rate (4 Years)", "Graduation Rate (6 Years)"],
+            id_vars="colleges",
+            value_vars=["graduate_rate_4yr", "graduate_rate_6yr"],
             var_name="Graduation Type",
             value_name="Rate"
         )
-        sns.barplot(x="Rate", y="College", hue="Graduation Type", data=df_melt)
+        sns.barplot(x="Rate", y="colleges", hue="Graduation Type", data=df_melt)
         plt.title("4-Year vs 6-Year Graduation Rates by College")
         plt.tight_layout()
         plt.show()
