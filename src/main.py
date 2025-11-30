@@ -4,27 +4,27 @@ import pandas as pd
 import numpy as np
 import sklearn as sk
 
-df = pd.read_csv('datasets/college_data.csv')
-df['Application Volume (Students)'] = df['Application Volume (Students)'].replace({',': ''}, regex=True).astype(int)
+from visualization_class import CollegeVisualizer
+from feature_engineering_class import FeatureEngineer
 
-plt.figure(figsize=(12,6))
-sns.barplot(data=df, x='College', y='Application Volume (Students)')
-plt.xticks(rotation=45)
-plt.title('Application Volume by College')
-plt.tight_layout()
-plt.show()
 
-plt.figure(figsize=(12,6))
-sns.barplot(data=df, x='College', y='Admission Rates')
-plt.xticks(rotation=45)
-plt.title('Admission Rates by College')
-plt.tight_layout()
-plt.show()
+def main():
+    """Main script that executes feature engineering and visualizations."""
+    
+    # Feature Engineering
+    print("Starting feature engineering...")
+    engineer = FeatureEngineer('datasets/dataset.csv')
+    engineer.engineer_all_features()
+    engineer.save_engineered_data()
+    print("Feature engineering completed!\n")
+    
+    # Visualization
+    print("Starting visualizations...")
+    visualizer = CollegeVisualizer("datasets/engineered_data.csv")
+    visualizer.create_all_visualizations()
+    visualizer.save_cleaned_data()
+    print("Visualizations completed!")
 
-df_melted = df.melt(id_vars='College', value_vars=['Graduation Rate (4 Years)', 'Graduation Rate (6 Years)'], var_name='Graduation Period', value_name='Rate')
-plt.figure(figsize=(12,6))
-sns.barplot(data=df_melted, x='College', y='Rate', hue='Graduation Period')
-plt.xticks(rotation=45)
-plt.title('Graduation Rates by College')
-plt.tight_layout()
-plt.show()
+
+if __name__ == "__main__":
+    main()
