@@ -2,6 +2,11 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
+"""
+For the purpose of setting up inital visualization functionality.
+"""
+
+
 # Load the college dataset from the CSV file
 file_path = 'datasets/engineered_data.csv'
 df = pd.read_csv(file_path)

@@ -1,6 +1,11 @@
 import pandas as pd
 import numpy as np
 
+"""
+For the purpose of setting up initial feature engineering functionality.
+"""
+
+
 # Load the dataset
 df = pd.read_csv('datasets/dataset.csv')
 
@@ -30,5 +35,3 @@ if df.isnull().any().any():
 # Save new features to a CSV file
 df.to_csv('datasets/engineered_data.csv', index=False)
 print("Engineered dataset saved")
-
-
