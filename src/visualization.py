@@ -2,6 +2,10 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
+"""
+THIS FILE IS ONLY FOR QUICK VISUALIZATION TESTING PURPOSES.
+"""
+
 file_path = "datasets/college_data.csv"
 df = pd.read_csv(file_path)
 
@@ -76,7 +80,7 @@ plt.show()
 
 # 4. Tuition Rate vs Grad Rate (6-year)
 plt.figure(figsize=(8,6))
-sns.scatterplot(x="Tuition Rate", y="Graduation Rate (6 Years)", hue="College", data=df, s=100)
-plt.title("Tuition Rate vs 6-Year Graduation Rate")
+sns.scatterplot(x="Tuition Cost", y="Graduation Rate (6 Years)", hue="College", data=df, s=100)
+plt.title("Tuition Cost vs 6-Year Graduation Rate")
 plt.tight_layout()
 plt.show()
