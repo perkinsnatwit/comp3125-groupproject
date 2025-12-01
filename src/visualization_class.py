@@ -92,6 +92,27 @@ class CollegeVisualizer:
         plt.savefig("figures/cohort_size_vs_6yr_graduation.png", dpi=300)
         plt.show()
     
+    def plot_selectivity_score_vs_4yr_graduation(self) -> None:
+        """Create a scatter plot of selectivity score vs 4-year graduation rate."""
+        if "selectivity_score" not in self.df.columns:
+            self.df["selectivity_score"] = 1 / self.df["admission_rate"]
+        
+        plt.figure(figsize=(8, 6))
+        sns.scatterplot(
+            x="selectivity_score",
+            y="graduate_rate_4yr",
+            hue="colleges",
+            data=self.df,
+            s=100
+        )
+        plt.title("Selective Score vs 4-Year Graduation Rate")
+        plt.xlabel("Selectivity Score")
+        plt.ylabel("4-Year Graduation Rate (%)")
+        plt.tight_layout()
+        os.makedirs("figures", exist_ok=True)
+        plt.savefig("figures/selectivity_score_vs_4yr_graduation.png", dpi=300)
+        plt.show()
+    
     def plot_selectivity_score_vs_6yr_graduation(self) -> None:
         """Create a scatter plot of selectivity score vs 6-year graduation rate."""
         if "selectivity_score" not in self.df.columns:
@@ -197,7 +218,6 @@ class CollegeVisualizer:
         self.plot_selectivity_score_vs_4yr_graduation()
         self.plot_selectivity_score_vs_6yr_graduation()
         self.plot_admission_rate_vs_4yr_graduation()
-        self.plot_admission_rate_vs_6yr_graduation()
         self.plot_tuition_vs_4yr_graduation()
         self.plot_tuition_vs_6yr_graduation()
     
@@ -209,4 +229,3 @@ if __name__ == "__main__":
     # Example usage
     visualizer = CollegeVisualizer("datasets/college_data.csv")
     visualizer.create_all_visualizations()
-    visualizer.save_cleaned_data()
