@@ -30,17 +30,23 @@ class FeatureEngineer:
         """Create selectivity score based on reciprocal of admission rate."""
         self.df["selectivity_score"] = 1 / self.df["admission_rate"]
     
+    def create_cohort_size(self) -> None:
+        """Create cohort size feature (application_volume * admission_rate)."""
+        self.df["cohort_size"] = self.df["application_volume"] * self.df["admission_rate"]
+    
     def round_features(self) -> None:
         """Round engineered features to specified decimal places."""
         self.df['avg_graduation_rate'] = self.df['avg_graduation_rate'].round(3)
         self.df['graduation_rate_improvement'] = self.df['graduation_rate_improvement'].round(3)
         self.df['selectivity_score'] = self.df['selectivity_score'].round(2)
+        self.df['cohort_size'] = self.df['cohort_size'].round(2)
     
     def engineer_all_features(self) -> None:
         """Execute all feature engineering steps in sequence."""
         self.create_average_graduation_rate()
         self.create_graduation_rate_improvement()
         self.create_selectivity_score()
+        self.create_cohort_size()
         self.round_features()
     
     def save_engineered_data(self, output_path: str = 'datasets/engineered_data.csv') -> None:
