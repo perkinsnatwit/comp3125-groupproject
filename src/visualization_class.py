@@ -202,17 +202,17 @@ class CollegeVisualizer:
         plt.show()
     
     def plot_tuition_vs_6yr_graduation(self) -> None:
-        """Create a scatter plot of tuition rate vs 6-year graduation rate."""
+        """Create a scatter plot of tuition cost vs 6-year graduation rate."""
         plt.figure(figsize=(8, 6))
         sns.scatterplot(
-            x="tuition_rate",
+            x="tuition_cost",
             y="graduate_rate_6yr",
             hue="colleges",
             data=self.df,
             s=100
         )
-        plt.title("Tuition Rate vs 6-Year Graduation Rate")
-        plt.xlabel("Tuition Rate")
+        plt.title("Tuition Cost vs 6-Year Graduation Rate")
+        plt.xlabel("Tuition Cost")
         plt.ylabel("6-Year Graduation Rate (%)")
         plt.tight_layout()
         os.makedirs("figures", exist_ok=True)
