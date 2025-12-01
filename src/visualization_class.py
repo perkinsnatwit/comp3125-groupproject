@@ -162,6 +162,63 @@ class CollegeVisualizer:
         plt.savefig("figures/cohort_size_vs_6yr_graduation.png", dpi=300)
         plt.show()
     
+    def plot_selectivity_score_vs_6yr_graduation(self) -> None:
+        """Create a scatter plot of selectivity score vs 6-year graduation rate."""
+        if "selectivity_score" not in self.df.columns:
+            self.df["selectivity_score"] = 1 / self.df["admission_rate"]
+        
+        plt.figure(figsize=(8, 6))
+        sns.scatterplot(
+            x="selectivity_score",
+            y="graduate_rate_6yr",
+            hue="colleges",
+            data=self.df,
+            s=100
+        )
+        plt.title("Selectivity Score vs 6-Year Graduation Rate")
+        plt.xlabel("Selectivity Score")
+        plt.ylabel("6-Year Graduation Rate (%)")
+        plt.tight_layout()
+        os.makedirs("figures", exist_ok=True)
+        plt.savefig("figures/selectivity_score_vs_6yr_graduation.png", dpi=300)
+        plt.show()
+    
+    def plot_admission_rate_vs_6yr_graduation(self) -> None:
+        """Create a scatter plot of admission rate vs 6-year graduation rate."""
+        plt.figure(figsize=(8, 6))
+        sns.scatterplot(
+            x="admission_rate",
+            y="graduate_rate_6yr",
+            hue="colleges",
+            data=self.df,
+            s=100
+        )
+        plt.title("Admission Rate vs 6-Year Graduation Rate")
+        plt.xlabel("Admission Rate (%)")
+        plt.ylabel("6-Year Graduation Rate (%)")
+        plt.tight_layout()
+        os.makedirs("figures", exist_ok=True)
+        plt.savefig("figures/admission_rate_vs_6yr_graduation.png", dpi=300)
+        plt.show()
+    
+    def plot_tuition_vs_6yr_graduation(self) -> None:
+        """Create a scatter plot of tuition rate vs 6-year graduation rate."""
+        plt.figure(figsize=(8, 6))
+        sns.scatterplot(
+            x="tuition_rate",
+            y="graduate_rate_6yr",
+            hue="colleges",
+            data=self.df,
+            s=100
+        )
+        plt.title("Tuition Rate vs 6-Year Graduation Rate")
+        plt.xlabel("Tuition Rate")
+        plt.ylabel("6-Year Graduation Rate (%)")
+        plt.tight_layout()
+        os.makedirs("figures", exist_ok=True)
+        plt.savefig("figures/tuition_vs_6yr_graduation.png", dpi=300)
+        plt.show()
+    
     def create_all_visualizations(self) -> None:
         """Execute all visualization steps in sequence."""
         self.plot_admission_vs_graduation()
@@ -172,6 +229,9 @@ class CollegeVisualizer:
         self.plot_admission_rate_vs_application_volume()
         self.plot_cohort_size_vs_4yr_graduation()
         self.plot_cohort_size_vs_6yr_graduation()
+        self.plot_selectivity_score_vs_6yr_graduation()
+        self.plot_admission_rate_vs_6yr_graduation()
+        self.plot_tuition_vs_6yr_graduation()
     
     def save_cleaned_data(self, output_path: str = "datasets/college_data_cleaned.csv") -> None:
         """
