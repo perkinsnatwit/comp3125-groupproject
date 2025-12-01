@@ -80,5 +80,3 @@ sns.scatterplot(x="Tuition Rate", y="Graduation Rate (6 Years)", hue="College", 
 plt.title("Tuition Rate vs 6-Year Graduation Rate")
 plt.tight_layout()
 plt.show()
-
-df.to_csv("datasets/college_data_cleaned.csv", index=False)
