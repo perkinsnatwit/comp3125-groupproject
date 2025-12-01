@@ -48,7 +48,7 @@ class CollegeVisualizer:
         if "selectivity_score" not in self.df.columns:
             self.df["selectivity_score"] = 1 / self.df["admission_rate"]
         
-        plt.figure(figsize=(8, 6))
+        plt.figure(figsize=(10, 6))
         sns.scatterplot(
             x="selectivity_score",
             y="graduate_rate_4yr",
@@ -59,6 +59,7 @@ class CollegeVisualizer:
         plt.title("Selective Score vs 4-Year Graduation Rate")
         plt.xlabel("Selectivity Score")
         plt.ylabel("4-Year Graduation Rate (%)")
+        plt.legend(bbox_to_anchor=(1.05, 1), loc="upper left")
         plt.tight_layout()
         os.makedirs("figures", exist_ok=True)
         plt.savefig("figures/selectivity_score_vs_4yr_graduation.png", dpi=300)
@@ -68,7 +69,7 @@ class CollegeVisualizer:
         if "selectivity_score" not in self.df.columns:
             self.df["selectivity_score"] = 1 / self.df["admission_rate"]
         
-        plt.figure(figsize=(8, 6))
+        plt.figure(figsize=(10, 6))
         sns.scatterplot(
             x="selectivity_score",
             y="graduate_rate_6yr",
@@ -79,13 +80,14 @@ class CollegeVisualizer:
         plt.title("Selective Score vs 6-Year Graduation Rate")
         plt.xlabel("Selectivity Score")
         plt.ylabel("6-Year Graduation Rate (%)")
+        plt.legend(bbox_to_anchor=(1.05, 1), loc="upper left")
         plt.tight_layout()
         os.makedirs("figures", exist_ok=True)
         plt.savefig("figures/selectivity_score_vs_6yr_graduation.png", dpi=300)
     
     def plot_admission_vs_6yr_graduation(self) -> None:
         """Create a scatter plot of admission rate vs 6-year graduation rate."""
-        plt.figure(figsize=(8, 6))
+        plt.figure(figsize=(10, 6))
         sns.scatterplot(
             x="admission_rate",
             y="graduate_rate_6yr",
@@ -94,6 +96,7 @@ class CollegeVisualizer:
             s=100
         )
         plt.title("Admission Rate vs 6-Year Graduation Rate")
+        plt.legend(bbox_to_anchor=(1.05, 1), loc="upper left")
         plt.tight_layout()
         os.makedirs("figures", exist_ok=True)
         plt.savefig("figures/admission_vs_6yr_graduation.png", dpi=300)
@@ -105,7 +108,7 @@ class CollegeVisualizer:
     
     def plot_admission_rate_vs_4yr_graduation(self) -> None:
         """Create a scatter plot of admission rate vs 4-year graduation rate."""
-        plt.figure(figsize=(8, 6))
+        plt.figure(figsize=(10, 6))
         sns.scatterplot(
             x="admission_rate",
             y="graduate_rate_4yr",
@@ -116,13 +119,16 @@ class CollegeVisualizer:
         plt.title("Admission Rate vs 4-Year Graduation Rate")
         plt.xlabel("Admission Rate (%)")
         plt.ylabel("4-Year Graduation Rate (%)")
+        plt.legend(bbox_to_anchor=(1.05, 1), loc="upper left")
         plt.tight_layout()
         os.makedirs("figures", exist_ok=True)
         plt.savefig("figures/admission_rate_vs_4yr_graduation.png", dpi=300)
 
     def plot_tuition_vs_4yr_graduation_dual(self) -> None:
         """Create a dual-axis plot of tuition cost vs 4-year graduation rate by college."""
-        fig, ax1 = plt.subplots(figsize=(12, 6))
+        num_colleges = len(self.df)
+        figsize = (max(10, num_colleges * 0.6), 6)
+        fig, ax1 = plt.subplots(figsize=figsize)
         
         ax1.set_xlabel("College")
         ax1.set_ylabel("Tuition Cost ($)", color="tab:blue")
@@ -145,7 +151,9 @@ class CollegeVisualizer:
     
     def plot_tuition_vs_6yr_graduation_dual(self) -> None:
         """Create a dual-axis plot of tuition cost vs 6-year graduation rate by college."""
-        fig, ax1 = plt.subplots(figsize=(12, 6))
+        num_colleges = len(self.df)
+        figsize = (max(10, num_colleges * 0.6), 6)
+        fig, ax1 = plt.subplots(figsize=figsize)
         
         ax1.set_xlabel("College")
         ax1.set_ylabel("Tuition Cost ($)", color="tab:blue")
@@ -171,7 +179,9 @@ class CollegeVisualizer:
         if "cohort_size" not in self.df.columns:
             self.df["cohort_size"] = self.df["application_volume"] * self.df["admission_rate"]
         
-        fig, ax1 = plt.subplots(figsize=(12, 6))
+        num_colleges = len(self.df)
+        figsize = (max(10, num_colleges * 0.6), 6)
+        fig, ax1 = plt.subplots(figsize=figsize)
         
         ax1.set_xlabel("College")
         ax1.set_ylabel("Cohort Size", color="tab:blue")
@@ -197,7 +207,9 @@ class CollegeVisualizer:
         if "cohort_size" not in self.df.columns:
             self.df["cohort_size"] = self.df["application_volume"] * self.df["admission_rate"]
         
-        fig, ax1 = plt.subplots(figsize=(12, 6))
+        num_colleges = len(self.df)
+        figsize = (max(10, num_colleges * 0.6), 6)
+        fig, ax1 = plt.subplots(figsize=figsize)
         
         ax1.set_xlabel("College")
         ax1.set_ylabel("Cohort Size", color="tab:blue")
@@ -236,5 +248,5 @@ class CollegeVisualizer:
 
 if __name__ == "__main__":
     # Example usage
-    visualizer = CollegeVisualizer("datasets/college_data.csv")
+    visualizer = CollegeVisualizer("datasets/colleges_100.csv")
     visualizer.create_all_visualizations()
