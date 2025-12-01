@@ -67,4 +67,28 @@ plt.title("Tuition Rate vs Graduation Rate")
 plt.tight_layout()
 plt.show()
 
+plt.figure(figsize=(8,6))
+sns.scatterplot(x="Application Volume (Students)", y="Graduation Rate (4 Years)", hue="College", data=df, s=100)
+plt.title("Cohort Size vs Graduation Rate")
+plt.tight_layout()
+plt.show()
+
+plt.figure(figsize=(8,6))
+sns.scatterplot(x="Selective Score", y="Graduation Rate (4 Years)", hue="College", data=df, s=100)
+plt.title("Selective Score vs Graduation Rate")
+plt.tight_layout()
+plt.show()
+
+plt.figure(figsize=(8,6))
+sns.scatterplot(x="Admission Rates", y="Graduation Rate (4 Years)", hue="College", data=df, s=100)
+plt.title("Admission Rate vs Graduation Rate")
+plt.tight_layout()
+plt.show()
+
+plt.figure(figsize=(8,6))
+sns.scatterplot(x="Tuition Rate", y="Graduation Rate (4 Years)", hue="College", data=df, s=100)
+plt.title("Tuition Rate vs Graduation Rate")
+plt.tight_layout()
+plt.show()
+
 df.to_csv("datasets/college_data_cleaned.csv", index=False)
