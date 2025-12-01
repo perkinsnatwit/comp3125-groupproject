@@ -148,7 +148,7 @@ class CollegeVisualizer:
         plt.tight_layout()
         os.makedirs("figures", exist_ok=True)
         plt.savefig("figures/admission_vs_6yr_graduation.png", dpi=300)
-        plt.show()("Selectivity Score")
+        plt.show()
         plt.ylabel("4-Year Graduation Rate (%)")
         plt.tight_layout()
         os.makedirs("figures", exist_ok=True)
