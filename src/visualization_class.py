@@ -30,9 +30,6 @@ class CollegeVisualizer:
         """Set the seaborn theme and palette."""
         sns.set_theme(style="whitegrid", palette="muted")
     
-    
-
-    
     def plot_correlation_heatmap(self) -> None:
         """Create a correlation heatmap of numeric columns."""
         plt.figure(figsize=(8, 5))
