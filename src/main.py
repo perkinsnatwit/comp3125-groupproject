@@ -7,7 +7,6 @@ import sklearn as sk
 from visualization_class import CollegeVisualizer
 from feature_engineering_class import FeatureEngineer
 
-
 def main():
     """Main script that executes feature engineering and visualizations."""
     

@@ -3,7 +3,6 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import os
 
-
 class CollegeVisualizer:
     """A class to handle visualization of college datasets."""
     

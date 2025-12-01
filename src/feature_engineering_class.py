@@ -1,7 +1,6 @@
 import pandas as pd
 import numpy as np
 
-
 class FeatureEngineer:
     """A class to handle feature engineering for college datasets."""
     
