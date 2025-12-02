@@ -134,6 +134,7 @@ class CollegeVisualizer:
         ax1.set_ylabel("Tuition Cost ($)", color="tab:blue")
         ax1.bar(self.df["colleges"], self.df["tuition_cost"], color="tab:blue", alpha=0.7, label="Tuition Cost")
         ax1.tick_params(axis="y", labelcolor="tab:blue")
+        ax1.set_xticks(range(len(self.df["colleges"])))
         ax1.set_xticklabels(self.df["colleges"], rotation=45, ha="right")
         
         ax2 = ax1.twinx()
@@ -159,6 +160,7 @@ class CollegeVisualizer:
         ax1.set_ylabel("Tuition Cost ($)", color="tab:blue")
         ax1.bar(self.df["colleges"], self.df["tuition_cost"], color="tab:blue", alpha=0.7, label="Tuition Cost")
         ax1.tick_params(axis="y", labelcolor="tab:blue")
+        ax1.set_xticks(range(len(self.df["colleges"])))
         ax1.set_xticklabels(self.df["colleges"], rotation=45, ha="right")
         
         ax2 = ax1.twinx()
@@ -187,6 +189,7 @@ class CollegeVisualizer:
         ax1.set_ylabel("Cohort Size", color="tab:blue")
         ax1.bar(self.df["colleges"], self.df["cohort_size"], color="tab:blue", alpha=0.7, label="Cohort Size")
         ax1.tick_params(axis="y", labelcolor="tab:blue")
+        ax1.set_xticks(range(len(self.df["colleges"])))
         ax1.set_xticklabels(self.df["colleges"], rotation=45, ha="right")
         
         ax2 = ax1.twinx()
@@ -215,6 +218,7 @@ class CollegeVisualizer:
         ax1.set_ylabel("Cohort Size", color="tab:blue")
         ax1.bar(self.df["colleges"], self.df["cohort_size"], color="tab:blue", alpha=0.7, label="Cohort Size")
         ax1.tick_params(axis="y", labelcolor="tab:blue")
+        ax1.set_xticks(range(len(self.df["colleges"])))
         ax1.set_xticklabels(self.df["colleges"], rotation=45, ha="right")
         
         ax2 = ax1.twinx()
