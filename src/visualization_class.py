@@ -29,6 +29,17 @@ class CollegeVisualizer:
         """Set the seaborn theme and palette."""
         sns.set_theme(style="whitegrid", palette="muted")
     
+    def _save_figure(self, filename: str) -> None:
+        """
+        Save the current figure to the figures directory.
+        
+        Args:
+            filename (str): Name of the file to save (e.g., 'plot_name.png')
+        """
+        plt.tight_layout()
+        os.makedirs("figures", exist_ok=True)
+        plt.savefig(f"figures/{filename}", dpi=300)
+    
     def plot_correlation_heatmap(self) -> None:
         """Create a correlation heatmap of numeric columns."""
         plt.figure(figsize=(8, 5))
@@ -39,9 +50,7 @@ class CollegeVisualizer:
             fmt=".2f"
         )
         plt.title("Correlation Heatmap of College Metrics")
-        plt.tight_layout()
-        os.makedirs("figures", exist_ok=True)
-        plt.savefig("figures/correlation_heatmap.png", dpi=300)    
+        self._save_figure("correlation_heatmap.png")    
 
     def plot_selectivity_score_vs_4yr_graduation(self) -> None:
         """Create a scatter plot of selectivity score vs 4-year graduation rate."""
@@ -60,9 +69,7 @@ class CollegeVisualizer:
         plt.xlabel("Selectivity Score")
         plt.ylabel("4-Year Graduation Rate (%)")
         plt.legend(bbox_to_anchor=(1.05, 1), loc="upper left")
-        plt.tight_layout()
-        os.makedirs("figures", exist_ok=True)
-        plt.savefig("figures/selectivity_score_vs_4yr_graduation.png", dpi=300)
+        self._save_figure("selectivity_score_vs_4yr_graduation.png")
     
     def plot_selectivity_score_vs_6yr_graduation(self) -> None:
         """Create a scatter plot of selectivity score vs 6-year graduation rate."""
@@ -81,9 +88,7 @@ class CollegeVisualizer:
         plt.xlabel("Selectivity Score")
         plt.ylabel("6-Year Graduation Rate (%)")
         plt.legend(bbox_to_anchor=(1.05, 1), loc="upper left")
-        plt.tight_layout()
-        os.makedirs("figures", exist_ok=True)
-        plt.savefig("figures/selectivity_score_vs_6yr_graduation.png", dpi=300)
+        self._save_figure("selectivity_score_vs_6yr_graduation.png")
     
     def plot_admission_rate_vs_6yr_graduation(self) -> None:
         """Create a scatter plot of admission rate vs 6-year graduation rate."""
@@ -97,14 +102,7 @@ class CollegeVisualizer:
         )
         plt.title("Admission Rate vs 6-Year Graduation Rate")
         plt.legend(bbox_to_anchor=(1.05, 1), loc="upper left")
-        plt.tight_layout()
-        os.makedirs("figures", exist_ok=True)
-        plt.savefig("figures/admission_rate_vs_6yr_graduation.png", dpi=300)
-        
-        plt.ylabel("4-Year Graduation Rate (%)")
-        plt.tight_layout()
-        os.makedirs("figures", exist_ok=True)
-        plt.savefig("figures/selectivity_score_vs_4yr_graduation.png", dpi=300)
+        self._save_figure("admission_rate_vs_6yr_graduation.png")
     
     def plot_admission_rate_vs_4yr_graduation(self) -> None:
         """Create a scatter plot of admission rate vs 4-year graduation rate."""
@@ -120,9 +118,7 @@ class CollegeVisualizer:
         plt.xlabel("Admission Rate (%)")
         plt.ylabel("4-Year Graduation Rate (%)")
         plt.legend(bbox_to_anchor=(1.05, 1), loc="upper left")
-        plt.tight_layout()
-        os.makedirs("figures", exist_ok=True)
-        plt.savefig("figures/admission_rate_vs_4yr_graduation.png", dpi=300)
+        self._save_figure("admission_rate_vs_4yr_graduation.png")
 
     def plot_tuition_vs_4yr_graduation_dual(self) -> None:
         """Create a dual-axis plot of tuition cost vs 4-year graduation rate by college."""
@@ -146,9 +142,7 @@ class CollegeVisualizer:
         lines1, labels1 = ax1.get_legend_handles_labels()
         lines2, labels2 = ax2.get_legend_handles_labels()
         ax1.legend(lines1 + lines2, labels1 + labels2, loc="upper left")
-        plt.tight_layout()
-        os.makedirs("figures", exist_ok=True)
-        plt.savefig("figures/tuition_vs_4yr_graduation_dual.png", dpi=300) 
+        self._save_figure("tuition_vs_4yr_graduation_dual.png") 
     
     def plot_tuition_vs_6yr_graduation_dual(self) -> None:
         """Create a dual-axis plot of tuition cost vs 6-year graduation rate by college."""
@@ -172,9 +166,7 @@ class CollegeVisualizer:
         lines1, labels1 = ax1.get_legend_handles_labels()
         lines2, labels2 = ax2.get_legend_handles_labels()
         ax1.legend(lines1 + lines2, labels1 + labels2, loc="upper left")
-        plt.tight_layout()
-        os.makedirs("figures", exist_ok=True)
-        plt.savefig("figures/tuition_vs_6yr_graduation_dual.png", dpi=300)
+        self._save_figure("tuition_vs_6yr_graduation_dual.png")
     
     def plot_cohort_size_vs_4yr_graduation_dual(self) -> None:
         """Create a dual-axis plot of cohort size vs 4-year graduation rate by college."""
@@ -201,9 +193,7 @@ class CollegeVisualizer:
         lines1, labels1 = ax1.get_legend_handles_labels()
         lines2, labels2 = ax2.get_legend_handles_labels()
         ax1.legend(lines1 + lines2, labels1 + labels2, loc="upper left")
-        plt.tight_layout()
-        os.makedirs("figures", exist_ok=True)
-        plt.savefig("figures/cohort_size_vs_4yr_graduation_dual.png", dpi=300)
+        self._save_figure("cohort_size_vs_4yr_graduation_dual.png")
     
     def plot_cohort_size_vs_6yr_graduation_dual(self) -> None:
         """Create a dual-axis plot of cohort size vs 6-year graduation rate by college."""
@@ -230,9 +220,55 @@ class CollegeVisualizer:
         lines1, labels1 = ax1.get_legend_handles_labels()
         lines2, labels2 = ax2.get_legend_handles_labels()
         ax1.legend(lines1 + lines2, labels1 + labels2, loc="upper left")
-        plt.tight_layout()
-        os.makedirs("figures", exist_ok=True)
-        plt.savefig("figures/cohort_size_vs_6yr_graduation_dual.png", dpi=300)
+        self._save_figure("cohort_size_vs_6yr_graduation_dual.png")
+    
+    def plot_application_volume_vs_4yr_graduation_dual(self) -> None:
+        """Create a dual-axis plot of application volume vs 4-year graduation rate by college."""
+        num_colleges = len(self.df)
+        figsize = (max(10, num_colleges * 0.6), 6)
+        fig, ax1 = plt.subplots(figsize=figsize)
+        
+        ax1.set_xlabel("College")
+        ax1.set_ylabel("Application Volume", color="tab:blue")
+        ax1.bar(self.df["colleges"], self.df["application_volume"], color="tab:blue", alpha=0.7, label="Application Volume")
+        ax1.tick_params(axis="y", labelcolor="tab:blue")
+        ax1.set_xticks(range(len(self.df["colleges"])))
+        ax1.set_xticklabels(self.df["colleges"], rotation=45, ha="right")
+        
+        ax2 = ax1.twinx()
+        ax2.set_ylabel("4-Year Graduation Rate (%)", color="tab:orange")
+        ax2.plot(self.df["colleges"], self.df["graduate_rate_4yr"], color="tab:orange", marker="o", linewidth=2, label="4-Year Graduation Rate")
+        ax2.tick_params(axis="y", labelcolor="tab:orange")
+        
+        plt.title("Application Volume vs 4-Year Graduation Rate by College")
+        lines1, labels1 = ax1.get_legend_handles_labels()
+        lines2, labels2 = ax2.get_legend_handles_labels()
+        ax1.legend(lines1 + lines2, labels1 + labels2, loc="upper left")
+        self._save_figure("application_volume_vs_4yr_graduation_dual.png")
+    
+    def plot_application_volume_vs_6yr_graduation_dual(self) -> None:
+        """Create a dual-axis plot of application volume vs 6-year graduation rate by college."""
+        num_colleges = len(self.df)
+        figsize = (max(10, num_colleges * 0.6), 6)
+        fig, ax1 = plt.subplots(figsize=figsize)
+        
+        ax1.set_xlabel("College")
+        ax1.set_ylabel("Application Volume", color="tab:blue")
+        ax1.bar(self.df["colleges"], self.df["application_volume"], color="tab:blue", alpha=0.7, label="Application Volume")
+        ax1.tick_params(axis="y", labelcolor="tab:blue")
+        ax1.set_xticks(range(len(self.df["colleges"])))
+        ax1.set_xticklabels(self.df["colleges"], rotation=45, ha="right")
+        
+        ax2 = ax1.twinx()
+        ax2.set_ylabel("6-Year Graduation Rate (%)", color="tab:orange")
+        ax2.plot(self.df["colleges"], self.df["graduate_rate_6yr"], color="tab:orange", marker="o", linewidth=2, label="6-Year Graduation Rate")
+        ax2.tick_params(axis="y", labelcolor="tab:orange")
+        
+        plt.title("Application Volume vs 6-Year Graduation Rate by College")
+        lines1, labels1 = ax1.get_legend_handles_labels()
+        lines2, labels2 = ax2.get_legend_handles_labels()
+        ax1.legend(lines1 + lines2, labels1 + labels2, loc="upper left")
+        self._save_figure("application_volume_vs_6yr_graduation_dual.png")
     
     def create_all_visualizations(self) -> None:
         """Execute all visualization steps in sequence."""
@@ -244,6 +280,8 @@ class CollegeVisualizer:
         self.plot_tuition_vs_6yr_graduation_dual()
         self.plot_cohort_size_vs_4yr_graduation_dual()
         self.plot_cohort_size_vs_6yr_graduation_dual()
+        self.plot_application_volume_vs_4yr_graduation_dual()
+        self.plot_application_volume_vs_6yr_graduation_dual()
         self.plot_correlation_heatmap()
     
     def get_dataframe(self) -> pd.DataFrame:
