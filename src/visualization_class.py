@@ -85,7 +85,7 @@ class CollegeVisualizer:
         os.makedirs("figures", exist_ok=True)
         plt.savefig("figures/selectivity_score_vs_6yr_graduation.png", dpi=300)
     
-    def plot_admission_vs_6yr_graduation(self) -> None:
+    def plot_admission_rate_vs_6yr_graduation(self) -> None:
         """Create a scatter plot of admission rate vs 6-year graduation rate."""
         plt.figure(figsize=(10, 6))
         sns.scatterplot(
@@ -99,7 +99,7 @@ class CollegeVisualizer:
         plt.legend(bbox_to_anchor=(1.05, 1), loc="upper left")
         plt.tight_layout()
         os.makedirs("figures", exist_ok=True)
-        plt.savefig("figures/admission_vs_6yr_graduation.png", dpi=300)
+        plt.savefig("figures/admission_rate_vs_6yr_graduation.png", dpi=300)
         
         plt.ylabel("4-Year Graduation Rate (%)")
         plt.tight_layout()
@@ -236,7 +236,7 @@ class CollegeVisualizer:
     
     def create_all_visualizations(self) -> None:
         """Execute all visualization steps in sequence."""
-        self.plot_admission_vs_6yr_graduation()
+        self.plot_admission_rate_vs_6yr_graduation()
         self.plot_selectivity_score_vs_4yr_graduation()
         self.plot_selectivity_score_vs_6yr_graduation()
         self.plot_admission_rate_vs_4yr_graduation()
